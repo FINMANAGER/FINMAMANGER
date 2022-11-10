@@ -14,4 +14,11 @@
     <string name="register_label">Register</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="last_name">Last Name</string>
+    <string name="first_name">First Name</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="username">Username</string>
+    <string name="phone_number">Phone number</string>
+    <string name="create_your_profile">Fill the form to create your profile</string>
+    <string name="cancel">Cancel</string>
 </resources>
