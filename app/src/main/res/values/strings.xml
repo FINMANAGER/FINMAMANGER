@@ -8,10 +8,9 @@
     <string name="login_label">Login</string>
     <string name="remember_me_label">Remember me</string>
     <string name="forgot_password_label">Forgot password</string>
-    <string name="no_account_label">Don\'t have an account? <font color="#000"> <u>Sign Up</u></font></string>
-    <string name="have_account_label">Already have an account? <font color="#000"> <u>Login</u></font></string>
+    <string name="no_account_label">Don\'t have an account? <u>Sign Up</u></string>
+    <string name="have_account_label">Already have an account?  <u>Login</u></string>
     <string name="login_to_account_label">Login to your account</string>
     <string name="register_label">Register</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="agree_terms_label">By registering you are agreeing to our Terms of use and Privacy Policy</string>
 </resources>

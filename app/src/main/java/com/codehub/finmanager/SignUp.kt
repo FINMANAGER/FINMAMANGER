@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.codehub.finmanager.databinding.FragmentSignUpBinding
 
@@ -24,6 +25,35 @@ class SignUp : Fragment() {
             tvLogin.setOnClickListener {
                 findNavController().popBackStack()
             }
+            btnRegister.setOnClickListener {
+                if (validated()){
+                    Toast.makeText(requireContext(), "Going dashboard", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+    }
+
+    private fun validated(): Boolean {
+        return when {
+            binding.tiSignupEmail.text.isNullOrEmpty() -> {
+                binding.tiSignupEmail.error = "Email cannot be empty"
+                false
+            }
+            binding.tiSignupPassword.text.isNullOrEmpty() ->{
+                binding.tiSignupPassword.error = "Password cannot be empty"
+                false
+            }
+            binding.tiConfirmPassword.text.toString().isEmpty() ->{
+                false
+            }
+            binding.tiConfirmPassword.text.toString()!=binding.tiSignupPassword.text.toString() ->{
+                binding.tiConfirmPassword.error = "Passwords do not match"
+                false
+            }
+            else -> {
+                true
+            }
+        }
+
     }
 }
