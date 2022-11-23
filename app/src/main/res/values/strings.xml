@@ -13,4 +13,21 @@
     <string name="login_to_account_label">Login to your account</string>
     <string name="register_label">Register</string>
     <string name="agree_terms_label">By registering you are agreeing to our Terms of use and Privacy Policy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_picture_content_desc">profile picture</string>
+    <string name="history_label">History</string>
+    <string name="my_budgets_label">My Budgets</string>
+    <string name="income_label">Income</string>
+    <string name="your_balance_label">Your Balance</string>
+    <string name="expenses_label">Expenses</string>
+    <string name="balance_hint">500$</string>
+    <string name="income_percent_hint">20%</string>
+    <string name="expenses_percent_hint">50%</string>
+    <string name="current_user_hint">John Doe</string>
+    <string name="transaction_title_hint">Food</string>
+    <string name="transaction_description_hint">Food Description</string>
+    <string name="transaction_date_hint">11 Nov, 2022</string>
+    <string name="transaction_image_content_desc">Transaction image</string>
+    <string name="fab_content_desc">Add Income or Expense</string>
 </resources>

@@ -1,5 +1,6 @@
-package com.codehub.finmanager
+package com.codehub.finmanager.ui
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,10 +8,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.databinding.FragmentSignUpBinding
 
 class SignUp : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity() as MainActivity).handleBottomBarVisibility(false)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
