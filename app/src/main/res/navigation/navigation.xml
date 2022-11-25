@@ -6,17 +6,38 @@
     app:startDestination="@id/login">
     <fragment
         android:id="@+id/login"
-        android:name="com.codehub.finmanager.Login"
+        android:name="com.codehub.finmanager.ui.Login"
         android:label="@string/login_label"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_login_to_signUp"
+            app:destination="@id/signUp" />
+    </fragment>
     <fragment
         android:id="@+id/signUp"
-        android:name="com.codehub.finmanager.SignUp"
+        android:name="com.codehub.finmanager.ui.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
     <fragment
-        android:id="@+id/createProfileFragment"
-        android:name="com.codehub.finmanager.profile.CreateProfileFragment"
-        android:label="fragment_create_profile"
-        tools:layout="@layout/fragment_create_profile" />
+        android:id="@+id/dashboard"
+        android:name="com.codehub.finmanager.ui.Dashboard"
+        android:label="fragment_dashboard"
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_dashboard_to_statistics"
+            app:destination="@id/statistics" />
+        <action
+            android:id="@+id/action_dashboard_to_addTransaction"
+            app:destination="@id/addTransaction" />
+    </fragment>
+    <fragment
+        android:id="@+id/statistics"
+        android:name="com.codehub.finmanager.ui.Statistics"
+        android:label="fragment_statistics"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/addTransaction"
+        android:name="com.codehub.finmanager.ui.AddTransaction"
+        android:label="fragment_add_transaction"
+        tools:layout="@layout/fragment_add_transaction" />
 </navigation>
