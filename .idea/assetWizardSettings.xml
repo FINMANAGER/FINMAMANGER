@@ -18,6 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/keyboard_arrow_left/baseline_keyboard_arrow_left_24.xml" />
                                       <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/account_balance_wallet/baseline_account_balance_wallet_24.xml" />
                                     </map>
                                   </option>
@@ -28,6 +29,7 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="outputName" value="ic_arrow_left" />
                             <entry key="color" value="5eff00" />
                             <entry key="outputName" value="ic_salary" />
                           </map>
