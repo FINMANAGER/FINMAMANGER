@@ -3,6 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/edit_text_background.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/switch_background.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/toggle_selector.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/activity_main.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_add_transaction.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_create_profile.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_login.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_sign_up.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_statistics.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_budget.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_transaction.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_transaction_picture.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_variable.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_creat_profile.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_create_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
