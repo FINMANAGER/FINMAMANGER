@@ -7,6 +7,8 @@ import com.codehub.finmanager.model.Transaction
 
 object Constants {
 
+    val BASE_URL = "http://154.159.237.82:3000"
+    val BASE_URL_EMULATOR = "http://10.0.2.2:3000"
     val budgets = listOf(
         Budget("Food", 2000.00, 7000.00, R.drawable.ic_food),
         Budget("Medicine", 500.00, 4000.00, R.drawable.ic_medicine),

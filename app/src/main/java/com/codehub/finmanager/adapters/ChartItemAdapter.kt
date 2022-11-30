@@ -1,24 +1,27 @@
 package com.codehub.finmanager.adapters
 
-import android.content.res.ColorStateList
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.codehub.finmanager.R
-import com.codehub.finmanager.databinding.ItemTransactionBinding
 import com.codehub.finmanager.databinding.ItemVariableBinding
 import com.codehub.finmanager.model.ChartItem
-import com.codehub.finmanager.model.Transaction
 
 
 class ChartItemAdapter : ListAdapter<ChartItem, ChartItemAdapter.ChartViewHolder>(ChartDiffUtil){
     inner class ChartViewHolder(private val binding: ItemVariableBinding):RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("UseCompatLoadingForDrawables")
         fun bind(chartItem: ChartItem){
             binding.tvChartItemName.text = chartItem.name
             binding.tvChartItemAmount.text = chartItem.amount.toString()
-            binding.variableColor.setCardBackgroundColor(ColorStateList.valueOf(chartItem.color))
+            binding.variableColor.apply {
+                setImageResource(chartItem.color)
+                background = binding.root.resources.getDrawable(R.drawable.circle_background)
+            }
+
         }
     }
 

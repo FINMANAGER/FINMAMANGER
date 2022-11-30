@@ -30,6 +30,7 @@ class Statistics : Fragment() {
         return binding.root
     }
 
+    @Suppress("DEPRECATION")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chartItemAdapter = ChartItemAdapter()
@@ -42,8 +43,25 @@ class Statistics : Fragment() {
                     LinearLayoutManager.VERTICAL, false
                 )
             }
+            Constants.chartItems.forEach { chartItem ->
+                val totals = Constants.chartItems.sumOf {
+                    it.amount
+                }
+                val percent = ((chartItem.amount.div(totals) )* 100).toFloat()
+                pieChart.apply {
+                    addPieSlice(
+                        PieModel(
+                            chartItem.name,
+                            percent,
+                            resources.getColor(chartItem.color)
+                        )
+                    )
+                    innerValueString = "55%"
+                }
 
-            pieChart.apply {
+            }
+
+        /*    pieChart.apply {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     addPieSlice(
                         PieModel(
@@ -71,7 +89,15 @@ class Statistics : Fragment() {
                 }
                 innerValueString = "55%"
             }
+*/
+        }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).apply {
+            handleBottomBarVisibility(beVisible = true)
+            handleBottomBarActions()
         }
     }
 }

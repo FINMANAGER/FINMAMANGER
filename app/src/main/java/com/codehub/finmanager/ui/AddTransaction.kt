@@ -15,13 +15,12 @@ import com.codehub.finmanager.util.Constants
 class AddTransaction : Fragment() {
     private lateinit var binding: FragmentAddTransactionBinding
     private lateinit var pictureAdapter: PictureAdapter
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         (requireActivity() as MainActivity).apply {
-            handleBottomBarVisibility(beVisible = true)
+            handleBottomBarVisibility(beVisible = false)
             handleBottomBarActions()
         }
         binding = FragmentAddTransactionBinding.inflate(inflater)
@@ -39,6 +38,17 @@ class AddTransaction : Fragment() {
             rvPictures.apply {
                 adapter = pictureAdapter
             }
+            ivBackButton.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).apply {
+            handleBottomBarVisibility(beVisible = false)
+            handleBottomBarActions()
         }
     }
 }
