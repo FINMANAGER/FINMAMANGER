@@ -53,4 +53,12 @@ class Dashboard : Fragment() {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).apply {
+            handleBottomBarVisibility(beVisible = true)
+            handleBottomBarActions()
+        }
+    }
 }

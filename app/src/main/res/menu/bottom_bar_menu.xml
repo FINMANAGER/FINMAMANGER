@@ -9,7 +9,7 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/profile"
+        android:id="@+id/createProfileFragment"
         android:icon="@drawable/ic_person"
         android:title="Account"
         app:showAsAction="always" />
