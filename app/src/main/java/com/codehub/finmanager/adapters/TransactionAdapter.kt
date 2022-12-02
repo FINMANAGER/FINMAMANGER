@@ -2,47 +2,76 @@ package com.codehub.finmanager.adapters
 
 import android.graphics.Color
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.codehub.finmanager.R
-import com.codehub.finmanager.databinding.ItemTransactionBinding
-import com.codehub.finmanager.model.Transaction
+import com.codehub.finmanager.model.TransactionModel
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
+class TransactionAdapter (private val transactionList: ArrayList<TransactionModel>) : RecyclerView.Adapter<TransactionAdapter.ViewHolder>(){
 
-class TransactionAdapter : ListAdapter<Transaction, TransactionAdapter.HistoryViewHolder>(TransactionDiffUtil){
-    inner class HistoryViewHolder(private val binding: ItemTransactionBinding):RecyclerView.ViewHolder(binding.root) {
-        fun bind(transaction: Transaction){
-            binding.tvTransactionTitle.text = transaction.title
-            binding.tvTransactionDate.text = transaction.date
-            binding.tvTransactionDesc.text = transaction.description
-            binding.ivTransactionImage.setImageResource(transaction.imageUrl)
-            if (transaction.isIncome){
-            binding.tvAmount.setTextColor(Color.GREEN)
-            }else{
-                binding.tvAmount.setTextColor(Color.RED)
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(clickListener: onItemClickListener){
+        mListener = clickListener
+    }
+
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_transaction, parent, false)
+        return ViewHolder(itemView, mListener)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val currentTransaction = transactionList[position]
+        holder.itvTransactionTitle.text = currentTransaction.title // get the current title
+
+        if (currentTransaction.type == 1){
+            holder.tvTransactionAmount.setTextColor(Color.parseColor("#ff9f1c"))
+        }else{
+            holder.tvTransactionAmount.setTextColor(Color.parseColor("#2ec4b6"))
+        }
+        holder.tvTransactionAmount.text = currentTransaction.amount.toString()
+
+        holder.tvCategory.text = currentTransaction.category
+
+        val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+        val result = Date(currentTransaction.date!!)
+        holder.tvDate.text = simpleDateFormat.format(result)
+
+        if (currentTransaction.type == 1){
+            holder.typeIcon.setImageResource(R.drawable.ic_moneyout_svgrepo_com)
+        }else{
+            holder.typeIcon.setImageResource(R.drawable.ic_moneyin_svgrepo_com)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return transactionList.size
+    }
+
+    class ViewHolder(itemView: View, clickListener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
+        val itvTransactionTitle: TextView = itemView.findViewById(R.id.tvTransactionTitle)
+        val tvTransactionAmount: TextView = itemView.findViewById(R.id.tvAmount)
+        val tvCategory: TextView = itemView.findViewById(R.id.tvCategory)
+        val tvDate: TextView = itemView.findViewById(R.id.tvDate)
+        val typeIcon: ImageView = itemView.findViewById(R.id.typeIcon)
+
+        init {
+            itemView.setOnClickListener {
+                clickListener.onItemClick(adapterPosition)
             }
         }
-    }
-
-    object TransactionDiffUtil: DiffUtil.ItemCallback<Transaction>(){
-        override fun areItemsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
-            return oldItem.title == newItem.title
-        }
-
-        override fun areContentsTheSame(oldItem: Transaction, newItem: Transaction): Boolean {
-            return oldItem == newItem
-        }
-
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
-        val binding = ItemTransactionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return HistoryViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
-        holder.bind(getItem(position))
     }
 }
