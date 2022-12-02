@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/enobo/AndroidStudioProjects/FINMAMANGER/app/src/main/res/layout/activity_main.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/AndroidStudioProjects/FINMAMANGER/app/src/main/res/layout/activity_transaction_details.xml" value="0.19074074074074074" />
         <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.203125" />
