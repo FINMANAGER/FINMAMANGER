@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">FinManager</string>
+    <string name="welcome_back_label">Welcome Back</string>
+    <string name="create_account_label">Create your account</string>
+    <string name="email_address_label">Email Address</string>
+    <string name="password_label">Password</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="login_label">Login</string>
+    <string name="remember_me_label">Remember me</string>
+    <string name="forgot_password_label">Forgot password</string>
+    <string name="no_account_label">Don\'t have an account? <u>Sign Up</u></string>
+    <string name="have_account_label">Already have an account?  <u>Login</u></string>
+    <string name="login_to_account_label">Login to your account</string>
+    <string name="register_label">Register</string>
+    <string name="agree_terms_label">By registering you are agreeing to our Terms of use and Privacy Policy</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="profile_picture_content_desc">profile picture</string>
+    <string name="history_label">History</string>
+    <string name="my_budgets_label">My Budgets</string>
+    <string name="income_label">Income</string>
+    <string name="your_balance_label">Your Balance</string>
+    <string name="expenses_label">Expenses</string>
+    <string name="balance_hint">500$</string>
+    <string name="income_percent_hint">20%</string>
+    <string name="expenses_percent_hint">50%</string>
+    <string name="current_user_hint">John Doe</string>
+    <string name="transaction_title_hint">Food</string>
+    <string name="transaction_description_hint">Food Description</string>
+    <string name="transaction_date_hint">11 Nov, 2022</string>
+    <string name="transaction_image_content_desc">Transaction image</string>
+    <string name="fab_content_desc">Add Income or Expense</string>
+    <string name="username">Username</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="create_your_profile">Create your profile</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="phone_number">+2348155676415</string>
+    <string name="cancel">cancel</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "457085899019",
+    "project_id": "finmanager-4590b",
+    "storage_bucket": "finmanager-4590b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:457085899019:android:8b13282436f6b84069120e",
+        "android_client_info": {
+          "package_name": "com.codehub.finmanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "457085899019-tl36ar547qeg49nf5bcumqlg7jj9i321.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTtxnd8zcDOloBHQujrPlQHdU51v4jH8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "457085899019-tl36ar547qeg49nf5bcumqlg7jj9i321.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

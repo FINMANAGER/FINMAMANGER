@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="5dp">
+
+    <TextView
+        android:id="@+id/tvChartItemName"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:ellipsize="end"
+        android:fontFamily="@font/roboto_medium"
+        android:maxLines="1"
+        android:text="@string/transaction_title_hint"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/variableColor"
+        app:layout_constraintEnd_toStartOf="@+id/itvTransactionDate"
+        app:layout_constraintStart_toEndOf="@+id/variableColor"
+        app:layout_constraintTop_toTopOf="@+id/variableColor" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/variableColor"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/teal_200"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/transaction_image_content_desc" />
+
+    <TextView
+        android:id="@+id/tvChartItemAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="200$"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tvChartItemName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvChartItemName" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChartItemAmount" />
+</androidx.constraintlayout.widget.ConstraintLayout>
