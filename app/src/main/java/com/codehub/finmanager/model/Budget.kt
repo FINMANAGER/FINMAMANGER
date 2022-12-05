@@ -1,8 +1,10 @@
 package com.codehub.finmanager.model
 
+import com.codehub.finmanager.R
+
 data class Budget(
-    val tittle:String,
-    val spended:Double,
-    val budget:Double,
-    val image:Int
+    val category:String="",
+    val spended:Double=0.0,
+    val budget:Double=0.0,
+    val date:String = ""
 )

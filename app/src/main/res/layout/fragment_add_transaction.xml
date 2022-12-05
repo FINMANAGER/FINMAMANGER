@@ -34,6 +34,7 @@
         </Toolbar>
 
         <TextView
+            android:id="@+id/tvAddTransactionLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -50,7 +51,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarLinear">
+        android:layout_below="@+id/toolbarLinear"
+        android:paddingBottom="50dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -88,6 +90,17 @@
                     android:gravity="center"
                     android:paddingHorizontal="18dp"
                     android:text="Income"
+                    android:textColor="@drawable/radio_text_selector" />
+                <RadioButton
+                    android:id="@+id/rbBudget"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:background="@drawable/radio_not_selected"
+                    android:button="@drawable/null_radio_button"
+                    android:gravity="center"
+                    android:paddingHorizontal="18dp"
+                    android:text="Budget"
                     android:textColor="@drawable/radio_text_selector" />
             </RadioGroup>
 

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.R
 import com.codehub.finmanager.databinding.FragmentCreateProfileBinding
 
@@ -13,6 +14,10 @@ class CreateProfileFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+        }
+        (requireActivity() as MainActivity).apply {
+            handleBottomBarVisibility(beVisible = true)
+            handleBottomBarActions()
         }
     }
 
@@ -27,5 +32,13 @@ class CreateProfileFragment : Fragment() {
 
     private fun setupToolbar(){
         binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_left)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as MainActivity).apply {
+            handleBottomBarVisibility(beVisible = true)
+            handleBottomBarActions()
+        }
     }
 }

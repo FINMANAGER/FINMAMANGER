@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.codehub.finmanager.databinding.ActivityMainBinding
+import com.codehub.finmanager.ui.FinManagerViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val finManagerViewModel: FinManagerViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -46,13 +51,16 @@ class MainActivity : AppCompatActivity() {
     fun handleBottomBarVisibility(beVisible:Boolean) {
         if (beVisible){
             binding.apply{
-                bottomNav.visibility = View.VISIBLE
                 fabAddIncomeExpense.visibility = View.VISIBLE
+                bottomNav.visibility = View.VISIBLE
+                bottomNav.fabCradleRoundedCornerRadius = 16f
             }
         }else{
             binding.apply {
-                bottomNav.visibility = View.GONE
                 fabAddIncomeExpense.visibility = View.GONE
+                bottomNav.visibility = View.GONE
+                bottomNav.fabCradleRoundedCornerRadius = 16f
+
             }
         }
     }

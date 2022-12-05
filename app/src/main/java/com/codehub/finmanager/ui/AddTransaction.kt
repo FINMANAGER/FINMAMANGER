@@ -2,21 +2,21 @@ package com.codehub.finmanager.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.R
 import com.codehub.finmanager.adapters.PictureAdapter
 import com.codehub.finmanager.databinding.FragmentAddTransactionBinding
+import com.codehub.finmanager.model.Budget
 import com.codehub.finmanager.model.TransactionModel
 import com.codehub.finmanager.util.CategoryOptions
 import com.codehub.finmanager.util.Constants
@@ -24,8 +24,9 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,10 +39,11 @@ class AddTransaction : Fragment() {
    //private lateinit var etCategory: AutoCompleteTextView
     private var type: Int = 1
     private lateinit var dbRef: DatabaseReference //initialize database
+    private val firStoreRef = Firebase.firestore
     private var isSubmitted: Boolean = false
     private var amount: Double = 0.0
     private var invertedDate: Long = 0
-    private lateinit var auth: FirebaseAuth
+    private lateinit var uid:String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +55,7 @@ class AddTransaction : Fragment() {
         }
         binding = FragmentAddTransactionBinding.inflate(inflater)
         pictureAdapter = PictureAdapter()
+        uid = Firebase.auth.currentUser?.uid!!
 
         //---back button---
         binding.backBtn.setOnClickListener {
@@ -77,20 +80,49 @@ class AddTransaction : Fragment() {
         //--radio button option choosing---
         binding.typeRadioGroup.setOnCheckedChangeListener { _, checkedID ->
             binding.category.text.clear() //clear the category autocompletetextview when the type changes
-            if (checkedID == R.id.rbExpense) {
-                type = 1 //expense
-                setBackgroundColor()
-                binding.category.setAdapter(expenseAdapter) //if expense type selected, the set list expense array in category menu
-            }
-            if (checkedID == R.id.rbIncome){
-                type = 2 //income
-                setBackgroundColor()
+            when (checkedID) {
+                R.id.rbExpense -> {
+                    type = 1 //expense
+                    setBackgroundColor()
+                    binding.apply {
+                        category.setAdapter(expenseAdapter) //if expense type selected, the set list expense array in category menu
+                        titleTIL.visibility = View.VISIBLE
+                        noteTIL.visibility = View.VISIBLE
+                        tvAddTransactionLabel.text = "Add Transaction"
+                    }
+                }
+               R.id.rbIncome -> {
+                    type = 2 //income
+                    setBackgroundColor()
+                    //if expense type selected, the set list income array in category menu :
+                    val listIncome = CategoryOptions.incomeCategory()
+                    val incomeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, listIncome)
+                    binding.apply {
+                        category.setAdapter(incomeAdapter)
+                        titleTIL.visibility = View.VISIBLE
+                        noteTIL.visibility = View.VISIBLE
+                        tvAddTransactionLabel.text = "Add Transaction"
+                    }
+                }
+                R.id.rbBudget ->{
+                    type = 3 //Budget
+                    setBackgroundColor()
+                    //if expense type selected, the set list income array in category menu :
+                    val incomeAdapter = ArrayAdapter(
+                        requireContext(),
+                        android.R.layout.simple_spinner_dropdown_item,
+                        listExpense)
 
-                //if expense type selected, the set list income array in category menu :
-                val listIncome = CategoryOptions.incomeCategory()
-                val incomeAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_dropdown_item, listIncome)
-                binding.category.setAdapter(incomeAdapter)
+                    binding.apply {
+                        category.setAdapter(incomeAdapter)
+                        titleTIL.visibility = View.GONE
+                        noteTIL.visibility = View.GONE
+                        tvAddTransactionLabel.text = "Add Budget"
+                    }
+
+                }
             }
+
         }
         //-----
 
@@ -103,10 +135,18 @@ class AddTransaction : Fragment() {
         //auth = Firebase.auth
         //--Saving the data button---
         binding.saveButton.setOnClickListener {
-            if (!isSubmitted){
-                saveTransactionData()
-            }else{
-                Snackbar.make(binding.root.findViewById(android.R.id.content), "You have saved the transaction data", Snackbar.LENGTH_LONG).show()
+            if(binding.rbBudget.isChecked){
+                saveBudget()
+            }else {
+                if (!isSubmitted) {
+                    saveTransactionData()
+                } else {
+                    Snackbar.make(
+                        binding.root.findViewById(android.R.id.content),
+                        "You have saved the transaction data",
+                        Snackbar.LENGTH_LONG
+                    ).show()
+                }
             }
 
         }
@@ -190,19 +230,92 @@ class AddTransaction : Fragment() {
     }
 
     private fun setBackgroundColor() {
-        if (type == 1){
-            binding.rbExpense.setBackgroundResource(R.drawable.radio_selected_expense)
-            binding.rbIncome.setBackgroundResource(R.drawable.radio_not_selected)
-            binding.toolbarLinear.setBackgroundResource(R.color.purple_500)
-            binding.saveButton.backgroundTintList = getColorStateList(requireContext(),R.color.purple_500)
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_500)
+        when (type) {
+            1 -> {
+                binding.rbExpense.setBackgroundResource(R.drawable.radio_selected_expense)
+                binding.rbIncome.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.rbBudget.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.toolbarLinear.setBackgroundResource(R.color.purple_500)
+                binding.saveButton.backgroundTintList = getColorStateList(requireContext(),R.color.purple_500)
+                activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_500)
 
-        }else{
-            binding.rbIncome.setBackgroundResource(R.drawable.radio_selected_income)
-            binding.rbExpense.setBackgroundResource(R.drawable.radio_not_selected)
-            binding.toolbarLinear.setBackgroundResource(R.color.purple_200)
-            binding.saveButton.backgroundTintList = getColorStateList(requireContext(),R.color.purple_200)
-            activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_200)
+            }
+            2 -> {
+                binding.rbIncome.setBackgroundResource(R.drawable.radio_selected_income)
+                binding.rbExpense.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.rbBudget.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.toolbarLinear.setBackgroundResource(R.color.purple_200)
+                binding.saveButton.backgroundTintList = getColorStateList(requireContext(),R.color.purple_200)
+                activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.purple_200)
+            }
+            else -> {
+                binding.rbBudget.setBackgroundResource(R.drawable.radio_selected_budget)
+                binding.rbIncome.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.rbExpense.setBackgroundResource(R.drawable.radio_not_selected)
+                binding.toolbarLinear.setBackgroundResource(R.color.teal_200)
+                binding.saveButton.backgroundTintList = getColorStateList(requireContext(),R.color.teal_200)
+                activity?.window?.statusBarColor = ContextCompat.getColor(requireContext(), R.color.teal_200)
+
+            }
         }
+
     }
+
+    private fun saveBudget() {
+
+        val budget = Budget(
+            category = binding.category.text.toString(),
+            budget = binding.amount.text.toString().toDouble(),
+            date = SimpleDateFormat("d/MM/yyyy", Locale.getDefault()).format(Date())
+        )
+
+        val budgetData = hashMapOf(
+            "budget" to budget.budget,
+            "category" to budget.category,
+            "date" to budget.date,
+            "spent" to budget.spended,
+        )
+
+        val budgetsRef = firStoreRef.collection("budget").document(uid)
+        budgetsRef.collection("categories")
+            .add(budgetData)
+            .addOnCompleteListener { savingTask ->
+                if (savingTask.isSuccessful){
+                    Toast.makeText(requireContext(), "saving budget successful", Toast.LENGTH_LONG)
+                        .show()
+                    findNavController().popBackStack()
+                }else{
+                    Toast.makeText(requireContext(), "Error occurred. ${savingTask.exception?.message} ", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+            }
+
+    }
+      /*  budgetsRef.get().addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                val document = task.result
+                if (document.exists()){
+                    Toast.makeText(requireContext(), "saving budget successful", Toast.LENGTH_LONG)
+                        .show()
+                    }else{
+                budgetsRef.collection("categories" )
+                    .add(budgetData)
+                    .addOnCompleteListener { savingTask ->
+                        if (savingTask.isSuccessful){
+                            Toast.makeText(requireContext(), "saving budget successful", Toast.LENGTH_LONG)
+                                .show()
+                            findNavController().popBackStack()
+                        }else{
+                            Toast.makeText(requireContext(), "Error occurred. ${savingTask.exception?.message} ", Toast.LENGTH_LONG)
+                                .show()
+                        }
+
+                    }
+            }
+
+        }
+
+    }*/
+
 }

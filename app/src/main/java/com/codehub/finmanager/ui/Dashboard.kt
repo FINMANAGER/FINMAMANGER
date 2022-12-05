@@ -3,6 +3,7 @@ package com.codehub.finmanager.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,17 +11,26 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.TransactionDetails
 import com.codehub.finmanager.adapters.BudgetAdapter
 import com.codehub.finmanager.adapters.TransactionAdapter
 import com.codehub.finmanager.databinding.FragmentDashboardBinding
+import com.codehub.finmanager.model.Budget
+import com.codehub.finmanager.model.BudgetDocument
 import com.codehub.finmanager.model.TransactionModel
 import com.codehub.finmanager.util.Constants
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -29,9 +39,12 @@ class Dashboard : Fragment() {
     private lateinit var budgetAdapter: BudgetAdapter
     private lateinit var typeOption: Spinner
     private lateinit var timeSpanOption: Spinner
+    private lateinit var uid:String
+    private val firStoreRef = Firebase.firestore
     var dateStart: Long = 0
     var dateEnd: Long = 0
     private lateinit var dbRef: DatabaseReference
+    private val finManagerViewModel:FinManagerViewModel by activityViewModels()
 
     private var selectedType: String = "All Type"//default is all type
     private var selectedTimeSpan: String = "All Time"
@@ -51,6 +64,7 @@ class Dashboard : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentDashboardBinding.inflate(inflater)
+        uid = FirebaseAuth.getInstance().uid!!
         return binding.root
     }
 
@@ -71,6 +85,7 @@ class Dashboard : Fragment() {
 
 
 
+        //getBudgets()
         getTransactionData()
 
 //        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh)
@@ -88,6 +103,26 @@ class Dashboard : Fragment() {
 //                adapter = transactionAdapter
 //                layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 //                isNestedScrollingEnabled = false
+            }
+        }
+
+        lifecycleScope.launch {
+            finManagerViewModel.currentUser.collect{ user ->
+                binding.tvCurrentUser.text = user.name
+            }
+        }
+
+        lifecycleScope.launch {
+            finManagerViewModel.budgetList.collect{ budgets ->
+                if (budgets.isEmpty()){
+                    binding.tvEmptyBudget.visibility = View.VISIBLE
+                    binding.rvBudget.visibility = View.INVISIBLE
+
+                }else{
+                    budgetAdapter.submitList(budgets)
+                    binding.rvBudget.visibility = View.INVISIBLE
+                    binding.tvEmptyBudget.visibility = View.GONE
+                }
             }
         }
     }
@@ -287,5 +322,24 @@ class Dashboard : Fragment() {
             handleBottomBarVisibility(beVisible = true)
             handleBottomBarActions()
         }
+    }
+
+    private fun getBudgets() {
+        firStoreRef.collection("budget")
+            .document(uid).collection("categories")
+            .get()
+            .addOnSuccessListener { result ->
+                val budgets = result.documents.map {
+                    it.toObject(Budget::class.java)
+                }
+                Log.d("Budget", "getBudgets: $budgets")
+                //Log.d("Budget", "getBudgets: $budgets")
+               budgetAdapter.submitList(budgets)
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(requireContext(), "Error occurred. $exception", Toast.LENGTH_LONG)
+                    .show()
+
+            }
     }
 }

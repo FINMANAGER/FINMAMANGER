@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         app:elevation="5dp"
         app:fabAlignmentMode="end"
-        app:fabCradleRoundedCornerRadius="18dp"
+        app:fabCradleRoundedCornerRadius="16dp"
         android:background="@drawable/top_rounded_corners">
         <com.google.android.material.bottomnavigation.BottomNavigationView
            android:id="@+id/bottomNavView"

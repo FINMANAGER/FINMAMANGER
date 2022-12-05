@@ -1,9 +1,11 @@
 package com.codehub.finmanager.model
 
+import java.time.temporal.TemporalAmount
+
 data class Transaction(
-    val title:String,
-    val description:String,
-    val isIncome:Boolean = false,
-    val date:String,
-    val imageUrl:Int
+    var title:String = "",
+    var description:String = "",
+    var isIncome:Boolean = false,
+    var date:String = "",
+    var amount: Double =0.0
 )

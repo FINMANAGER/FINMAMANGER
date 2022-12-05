@@ -4,6 +4,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a26d0c16128debed5b566298c01b503d/transformed/eazegraph-1.2.2/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a26d0c16128debed5b566298c01b503d/transformed/eazegraph-1.2.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a26d0c16128debed5b566298c01b503d/transformed/eazegraph-1.2.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/50cd57f0ea0aee795d529525a8e6329d/transformed/eazegraph-1.2.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/50cd57f0ea0aee795d529525a8e6329d/transformed/eazegraph-1.2.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/50cd57f0ea0aee795d529525a8e6329d/transformed/eazegraph-1.2.2/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.blackfizz/eazegraph/1.2.2/8d4c6966fbed1ee7ed6f3fb82c8c4c58fd810903/eazegraph-1.2.2-javadoc.jar!/" />
