@@ -5,7 +5,7 @@
     <item
         android:id="@+id/dashboard"
         android:icon="@drawable/ic_home"
-        android:title="home"
+        android:title="Home"
         app:showAsAction="always" />
 
     <item
@@ -16,7 +16,7 @@
     <item
         android:id="@+id/statistics"
         android:icon="@drawable/ic_chart"
-        android:title="stats"
+        android:title="Stats"
         app:showAsAction="always" />
     <item
     android:id="@+id/placeholder"

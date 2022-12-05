@@ -6,17 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.R
 import com.codehub.finmanager.adapters.ChartItemAdapter
 import com.codehub.finmanager.databinding.FragmentStatisticsBinding
 import com.codehub.finmanager.util.Constants
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import org.eazegraph.lib.models.PieModel
 
 class Statistics : Fragment() {
     private lateinit var binding: FragmentStatisticsBinding
     private lateinit var chartItemAdapter: ChartItemAdapter
+    private val finManagerViewModel: FinManagerViewModel by activityViewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,7 +40,8 @@ class Statistics : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chartItemAdapter = ChartItemAdapter()
-        chartItemAdapter.submitList(Constants.chartItems)
+        finManagerViewModel.getTransactions()
+        finManagerViewModel.getBudgets()
         binding.apply {
             rvChartItems.apply {
                 adapter = chartItemAdapter
@@ -43,54 +50,50 @@ class Statistics : Fragment() {
                     LinearLayoutManager.VERTICAL, false
                 )
             }
-            Constants.chartItems.forEach { chartItem ->
-                val totals = Constants.chartItems.sumOf {
-                    it.amount
+
+            lifecycleScope.launch {
+                finManagerViewModel.transactions.collect{
+                    val categories = finManagerViewModel.getCategoryTransactions(it)
+                    chartItemAdapter.submitList(categories)
+                    finManagerViewModel.totalIncome.collect{ totalIncome ->
+                        categories.forEach { chartItem ->
+                            val percent = ((chartItem.amount.div(totalIncome) )* 100).toFloat()
+                            pieChart.apply {
+                                addPieSlice(
+                                    PieModel(
+                                        chartItem.name,
+                                        percent,
+                                        chartItem.color
+                                    )
+                                )
+
+
+                            }
+
+                        }
+                    }
+
                 }
-                val percent = ((chartItem.amount.div(totals) )* 100).toFloat()
-                pieChart.apply {
-                    addPieSlice(
-                        PieModel(
-                            chartItem.name,
-                            percent,
-                            resources.getColor(chartItem.color)
-                        )
-                    )
-                    innerValueString = "55%"
                 }
 
+            lifecycleScope.launch {
+
+                finManagerViewModel.incomePercent.collect{
+                    pieChart.innerValueString =String.format("%.1f",it) + "%"
+                }
             }
 
-        /*    pieChart.apply {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    addPieSlice(
-                        PieModel(
-                            "Food",
-                            55F,
-                            resources.getColor(R.color.purple_200, null)
-                        )
-                    )
-                    addPieSlice(
-                        PieModel(
-                            "Travel",
-                            20F,
-                            resources.getColor(R.color.teal_200, null)
-                        )
-                    )
-                    addPieSlice(
-                        PieModel(
-                            "Salary",
-                            29F,
-                            resources.getColor(R.color.purple_500, null)
-                        )
-                    )
-                    addPieSlice(PieModel("Medicine", 9F, resources.getColor(R.color.teal_700, null)))
-                    startAnimation()
+
+            lifecycleScope.launch {
+                finManagerViewModel.currentUser.collect{ user ->
+                    tvCurrentUser.text = user.name
+
                 }
-                innerValueString = "55%"
             }
-*/
+
         }
+
+
     }
 
     override fun onResume() {

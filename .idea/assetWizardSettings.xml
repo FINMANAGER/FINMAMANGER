@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/arrow_back_ios/baseline_arrow_back_ios_24.xml" />
+                                      <entry key="url" value="file:$USER_HOME$/Android/Sdk/icons/material/materialicons/edit/baseline_edit_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,7 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="5eff00" />
-                            <entry key="outputName" value="ic_up_button" />
+                            <entry key="outputName" value="ic_edit" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/icons/finmanager/ic_travel.svg" />
                           </map>
                         </option>
                       </PersistentState>

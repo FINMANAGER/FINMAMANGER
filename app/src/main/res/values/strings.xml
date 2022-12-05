@@ -31,10 +31,11 @@
     <string name="transaction_image_content_desc">Transaction image</string>
     <string name="fab_content_desc">Add Income or Expense</string>
     <string name="username">Username</string>
-    <string name="create_profile">Create Profile</string>
+    <string name="create_profile">My Profile</string>
     <string name="create_your_profile">Create your profile</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="phone_number">+2348155676415</string>
     <string name="cancel">cancel</string>
+    <string name="full_name_label">Full Name</string>
 </resources>

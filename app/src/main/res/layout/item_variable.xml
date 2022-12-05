@@ -32,7 +32,6 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/circle_background"
             android:contentDescription="@string/transaction_image_content_desc" />
 
     <TextView

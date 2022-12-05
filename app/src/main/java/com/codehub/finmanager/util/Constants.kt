@@ -7,22 +7,55 @@ import com.codehub.finmanager.model.Transaction
 
 object Constants {
 
-    val BASE_URL = "http://154.159.237.82:3000"
-    val BASE_URL_EMULATOR = "http://10.0.2.2:3000"
+    val BASE_URL = "https://finmanager-backend.fly.dev"
     val budgets = listOf(
-        Budget("Food", 2000.00, 7000.00, R.drawable.ic_food),
-        Budget("Medicine", 500.00, 4000.00, R.drawable.ic_medicine),
-        Budget("Travel", 3000.00, 3500.00, R.drawable.ic_travel),
-        Budget("Clothing", 1000.00, 2000.00, R.drawable.ic_cloth),
-        Budget("Wifi", 200.00, 1000.00, R.drawable.ic_wifi),
+        Budget("Food", 2000.00, 7000.00, "02/12/2022"),
+        Budget("Medicine", 500.00, 4000.00,"02/12/2022"),
+        Budget("Travel", 3000.00, 3500.00,"02/12/2022"),
+        Budget("Clothing", 1000.00, 2000.00,"02/12/2022"),
+        Budget("Wifi", 200.00, 1000.00,"02/12/2022"),
     )
 
     val transactions = listOf(
-        Transaction("Food", "Daily bevareges, grocerries, vegetables...", true,"16 Nov, 2022", R.drawable.ic_food),
-        Transaction("Medicine", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", R.drawable.ic_medicine),
-        Transaction("Travel", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", R.drawable.ic_travel),
-        Transaction("Fees", "Daily bevareges, grocerries, vegetables...", true,"16 Nov, 2022", R.drawable.ic_fees),
-        Transaction("Wifi", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", R.drawable.ic_wifi),
+        Transaction(
+            200.0,
+            "Groceries",
+            "Food/Beverage",
+            true,
+            "16 Nov, 2022",
+            "Daily bevareges, grocerries, vegetables...",
+            ),
+        Transaction(
+            category = "Medicine",
+            description = "Daily bevareges, grocerries, vegetables...",
+            isIncome = false,
+           date =  "16 Nov, 2022",
+           amount =  25.0,
+        ),
+        Transaction(
+            title = "Tour",
+            category = "Travel",
+           description =  "Daily bevareges, grocerries, vegetables...",
+          isIncome =   false,
+         date =    "16 Nov, 2022",
+         amount =    300.0,
+        ),
+        Transaction(
+            title = "Sales",
+            category = "Salary",
+            description = "Daily bevareges, grocerries, vegetables...",
+            isIncome = true,
+           date =  "16 Nov, 2022",
+            amount = 5000.0,
+        ),
+        Transaction(
+            title = "Surfing",
+            category = "Wifi",
+            description = "Daily bevareges, grocerries, vegetables...",
+          isIncome =   false,
+           date =  "16/11/2022",
+           amount =  25.0,
+        ),
     )
 
     val chartItems = listOf(

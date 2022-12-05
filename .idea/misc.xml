@@ -3,12 +3,47 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/bg_rounded_amount.xml" value="0.11979166666666667" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_clear_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_delete_24.xml" value="0.11979166666666667" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_edit_24.xml" value="0.11979166666666667" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_format_list_bulleted_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_format_list_bulleted_36.xml" value="0.11979166666666667" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_notes_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_baseline_title_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_calc_note_svgrepo_com.xml" value="0.11979166666666667" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/ic_money_grey.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/null_radio_button.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/radio_not_selected.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/radio_selected_expense.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable-v24/radio_selected_income.xml" value="0.13958333333333334" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/background_gradient.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/bg_rounded_layout.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/bg_spinner.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/edit_text_background.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_baseline_arrow_drop_down_24.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_cloth.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_fees.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_food.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_medicine.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_moneyin_svgrepo_com.xml" value="0.22" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_moneyout_svgrepo_com.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_no_data_amico.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_travel.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/ic_wifi.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/switch_background.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/toggle_off.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/toggle_on.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/toggle_selector.xml" value="0.21927083333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/drawable/tv_skeleton_loading.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/activity_main.xml" value="0.12083333333333333" />
-        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_add_transaction.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/activity_transaction_details.xml" value="0.10364583333333334" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_add_transaction.xml" value="0.2340966921119593" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_create_profile.xml" value="0.12083333333333333" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_dashboard.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_login.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_sign_up.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/fragment_statistics.xml" value="0.203125" />
@@ -16,6 +51,8 @@
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_transaction.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_transaction_picture.xml" value="0.203125" />
         <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/item_variable.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/selected_spinner.xml" value="0.203125" />
+        <entry key="..\:/Users/enobo/Downloads/FINMAMANGER-dev/FINMAMANGER-dev/app/src/main/res/layout/shimmer_placeholder_layout.xml" value="0.203125" />
         <entry key="app/src/main/res/layout/fragment_creat_profile.xml" value="0.17" />
         <entry key="app/src/main/res/layout/fragment_create_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />

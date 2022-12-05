@@ -15,7 +15,7 @@ object RetrofitInstance {
             .build()
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Constants.BASE_URL_EMULATOR)
+            .baseUrl(Constants.BASE_URL)
             .client(client)
             .build()
     }

@@ -45,16 +45,47 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.13" />
 
-    <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tlName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                app:startIconDrawable="@drawable/ic_user_profile"
+                style="@style/OutlinedTextInputFieldStyle"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
+                app:startIconTint="@color/white"
+                app:hintTextAppearance="@style/whiteText"
+                app:layout_constraintEnd_toEndOf="@+id/tvRegisterLabel"
+                app:layout_constraintStart_toStartOf="@+id/tvRegisterLabel"
+                app:layout_constraintTop_toBottomOf="@+id/tvCreateAccountLabel">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiSignupName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/TextInputEditTextStyle"
+                    android:maxLines="1"
+                    android:inputType="textPersonName"
+                    android:textColorHint="@color/white"
+                    android:hint="@string/full_name_label" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tlEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="24dp"
         app:startIconDrawable="@drawable/ic_email"
         style="@style/OutlinedTextInputFieldStyle"
+                app:startIconTint="@color/white"
+                app:hintTextColor="@color/white"
+                android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tvRegisterLabel"
         app:layout_constraintStart_toStartOf="@+id/tvRegisterLabel"
-        app:layout_constraintTop_toBottomOf="@+id/tvCreateAccountLabel">
+        app:layout_constraintTop_toBottomOf="@+id/tlName">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiSignupEmail"
@@ -72,11 +103,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tlEmail"
         app:layout_constraintStart_toStartOf="@+id/tlEmail"
         app:layout_constraintTop_toBottomOf="@+id/tlEmail"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/white"
         app:passwordToggleTint="?attr/colorOnPrimary"
         >
 
@@ -94,11 +128,14 @@
         style="@style/OutlinedTextInputFieldStyle" android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/tlPassword"
         app:layout_constraintStart_toStartOf="@+id/tlPassword"
         app:layout_constraintTop_toBottomOf="@+id/tlPassword"
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_lock"
+        app:startIconTint="@color/white"
         app:passwordToggleTint="?attr/colorOnPrimary">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -131,7 +168,7 @@
                 android:layout_marginTop="100dp"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/register_label"
-                app:cornerRadius="25dp"
+                app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="@+id/tlConfirm"
                 app:layout_constraintStart_toStartOf="@+id/tlConfirm"
                 app:layout_constraintTop_toBottomOf="@+id/tvAgreeToTerms" />
