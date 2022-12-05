@@ -93,7 +93,7 @@ class SignUp : Fragment() {
                         displayName = binding.tiSignupName.text.toString()
                     }
                     auth.currentUser?.updateProfile(profileUpdate)
-                    val profile =
+                    /*val profile =
                         auth.currentUser?.uid?.let { UserProfile(
                             username = user.email,
                             uid = it,
@@ -102,6 +102,7 @@ class SignUp : Fragment() {
                     if (profile != null) {
                         finManagerViewModel.createUserProfile(profile)
                     }
+                    */
                     binding.pbRegistering.visibility = View.GONE
                     Toast.makeText(requireContext(), "Registration successful", Toast.LENGTH_SHORT)
                         .show()

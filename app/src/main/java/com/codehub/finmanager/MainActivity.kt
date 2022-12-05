@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        finManagerViewModel.auth = FirebaseAuth.getInstance()
         setContentView(binding.root)
 
         val naHostFragment = supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment

@@ -2,7 +2,6 @@ package com.codehub.finmanager.ui
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,21 +10,21 @@ import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.R
 import com.codehub.finmanager.adapters.PictureAdapter
 import com.codehub.finmanager.databinding.FragmentAddTransactionBinding
 import com.codehub.finmanager.model.Budget
+import com.codehub.finmanager.model.Transaction
 import com.codehub.finmanager.model.TransactionModel
 import com.codehub.finmanager.util.CategoryOptions
 import com.codehub.finmanager.util.Constants
 import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -44,6 +43,7 @@ class AddTransaction : Fragment() {
     private var amount: Double = 0.0
     private var invertedDate: Long = 0
     private lateinit var uid:String
+    private val finManagerViewModel:FinManagerViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -139,6 +139,7 @@ class AddTransaction : Fragment() {
                 saveBudget()
             }else {
                 if (!isSubmitted) {
+                    saveTransactions()
                     saveTransactionData()
                 } else {
                     Snackbar.make(
@@ -283,6 +284,7 @@ class AddTransaction : Fragment() {
                 if (savingTask.isSuccessful){
                     Toast.makeText(requireContext(), "saving budget successful", Toast.LENGTH_LONG)
                         .show()
+                    finManagerViewModel.getBudgets()
                     findNavController().popBackStack()
                 }else{
                     Toast.makeText(requireContext(), "Error occurred. ${savingTask.exception?.message} ", Toast.LENGTH_LONG)
@@ -290,6 +292,45 @@ class AddTransaction : Fragment() {
                 }
 
             }
+
+    }
+
+    private fun saveTransactions() {
+        val transaction = Transaction(
+            category = binding.category.text.toString(),
+            amount = binding.amount.text.toString().toDouble(),
+            date = SimpleDateFormat("d/MM/yyyy", Locale.getDefault()).format(Date()),
+            title =  binding.title.text.toString(),
+            isIncome= binding.rbIncome.isChecked,
+            description = binding.note.text.toString()
+
+        )
+
+        val transactionData = hashMapOf(
+            "category" to transaction.category,
+            "title" to transaction.title,
+            "amount" to transaction.amount,
+            "date" to transaction.date,
+            "isIncome" to transaction.isIncome,
+            "description" to transaction.description
+        )
+
+        val budgetsRef = firStoreRef.collection("transaction").document(uid)
+        budgetsRef.collection("transactions")
+            .add(transactionData)
+            .addOnCompleteListener { savingTask ->
+                if (savingTask.isSuccessful){
+                    Toast.makeText(requireContext(), "saving transaction successful", Toast.LENGTH_LONG)
+                        .show()
+                    finManagerViewModel.getTransactions()
+                    findNavController().popBackStack()
+                }else{
+                    Toast.makeText(requireContext(), "Error occurred. ${savingTask.exception?.message} ", Toast.LENGTH_LONG)
+                        .show()
+                }
+
+            }
+
 
     }
       /*  budgetsRef.get().addOnCompleteListener { task ->

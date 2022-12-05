@@ -1,6 +1,7 @@
 package com.codehub.finmanager.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,7 +41,6 @@ class Login : Fragment() {
                 findNavController().navigate(R.id.signUp)
             }
         }
-        // observeLogin()
     }
 
     private fun validFields(): Boolean {
@@ -76,9 +76,14 @@ class Login : Fragment() {
                     ?.let { auth.currentUser?.email?.let { it1 -> User(name = it, email = it1) }}
                     if (loggedInUser != null) {
                         finManagerViewModel.setCurrentUser(loggedInUser)
-                        finManagerViewModel.uid = auth.uid!!
+                        finManagerViewModel.setCurrentUserUid(auth.currentUser?.uid!!)
+                        finManagerViewModel.getBudgets()
+                        finManagerViewModel.getUserProfile()
+                        finManagerViewModel.getTransactions()
+                        Log.d("Login", "loginUser: ${auth.currentUser?.uid}")
                     }
                 } else {
+                    binding.pbLogingin.visibility = View.GONE
                     Toast.makeText(
                         requireContext(),
                         "Login failed. ${taskResults.exception?.message}",

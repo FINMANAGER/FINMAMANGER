@@ -17,11 +17,45 @@ object Constants {
     )
 
     val transactions = listOf(
-        Transaction("Food", "Daily bevareges, grocerries, vegetables...", true,"16 Nov, 2022", 200.0),
-        Transaction("Medicine", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", 25.0),
-        Transaction("Travel", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", 300.0),
-        Transaction("Fees", "Daily bevareges, grocerries, vegetables...", true,"16 Nov, 2022", 50.0),
-        Transaction("Wifi", "Daily bevareges, grocerries, vegetables...", false,"16 Nov, 2022", 25.0),
+        Transaction(
+            200.0,
+            "Groceries",
+            "Food/Beverage",
+            true,
+            "16 Nov, 2022",
+            "Daily bevareges, grocerries, vegetables...",
+            ),
+        Transaction(
+            category = "Medicine",
+            description = "Daily bevareges, grocerries, vegetables...",
+            isIncome = false,
+           date =  "16 Nov, 2022",
+           amount =  25.0,
+        ),
+        Transaction(
+            title = "Tour",
+            category = "Travel",
+           description =  "Daily bevareges, grocerries, vegetables...",
+          isIncome =   false,
+         date =    "16 Nov, 2022",
+         amount =    300.0,
+        ),
+        Transaction(
+            title = "Sales",
+            category = "Salary",
+            description = "Daily bevareges, grocerries, vegetables...",
+            isIncome = true,
+           date =  "16 Nov, 2022",
+            amount = 5000.0,
+        ),
+        Transaction(
+            title = "Surfing",
+            category = "Wifi",
+            description = "Daily bevareges, grocerries, vegetables...",
+          isIncome =   false,
+           date =  "16/11/2022",
+           amount =  25.0,
+        ),
     )
 
     val chartItems = listOf(

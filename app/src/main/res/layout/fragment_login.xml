@@ -68,6 +68,7 @@
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:maxLines="1"
+            android:textColorHint="@color/white"
             android:text="test4@gmail.com"
             style="@style/TextInputEditTextStyle"
             android:hint="@string/email_address_label" />
