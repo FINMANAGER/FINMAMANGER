@@ -40,7 +40,8 @@ class Statistics : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chartItemAdapter = ChartItemAdapter()
-
+        finManagerViewModel.getTransactions()
+        finManagerViewModel.getBudgets()
         binding.apply {
             rvChartItems.apply {
                 adapter = chartItemAdapter
@@ -65,7 +66,8 @@ class Statistics : Fragment() {
                                         chartItem.color
                                     )
                                 )
-                                innerValueString = "55%"
+
+
                             }
 
                         }
@@ -73,6 +75,13 @@ class Statistics : Fragment() {
 
                 }
                 }
+
+            lifecycleScope.launch {
+
+                finManagerViewModel.incomePercent.collect{
+                    pieChart.innerValueString =String.format("%.1f",it) + "%"
+                }
+            }
 
 
             lifecycleScope.launch {

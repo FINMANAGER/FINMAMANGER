@@ -9,13 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.codehub.finmanager.MainActivity
 import com.codehub.finmanager.R
 import com.codehub.finmanager.databinding.FragmentCreateProfileBinding
 import com.codehub.finmanager.model.UserProfile
 import com.codehub.finmanager.ui.FinManagerViewModel
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class CreateProfileFragment : Fragment() {
@@ -45,31 +43,40 @@ class CreateProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         finManagerViewModel.getUserProfile()
 
-       /* lifecycleScope.launch {
-            finManagerViewModel.currentUserProfile.collect{
-                binding.apply {
-                    tvUser.text = it.fullName
-                    tvUserEmail.text =  it.username
-                    tiFullName.setText(it.fullName)
-                    tiUsername.setText(it.username)
-                }
-            }
-        }*/
+        /* lifecycleScope.launch {
+             finManagerViewModel.currentUserProfile.collect{
+                 binding.apply {
+                     tvUser.text = it.fullName
+                     tvUserEmail.text =  it.username
+                     tiFullName.setText(it.fullName)
+                     tiUsername.setText(it.username)
+                 }
+             }
+         }*/
 
         lifecycleScope.launch {
-            finManagerViewModel.currentUser.collect{
+            finManagerViewModel.currentUser.collect {
                 binding.apply {
                     tvUser.text = it.name
-                    tvUserEmail.text =  it.email
+                    tvUserEmail.text = it.email
+                    tiUsername.setText(it.email)
+                    tiFullName.setText(it.name)
                 }
             }
         }
 
         binding.apply {
             toolbar.setOnMenuItemClickListener {
-                    clProfile.visibility = View.VISIBLE
-                    clProfileInfo.visibility = View.GONE
+                clProfile.visibility = View.VISIBLE
+                clProfileInfo.visibility = View.GONE
                 btnLogout.visibility = View.GONE
+                lifecycleScope.launch {
+                    finManagerViewModel.currentUser.collect {
+                        tiUsername.setText(it.email)
+                        tiFullName.setText(it.name)
+                    }
+                }
+
                 true
             }
             btnCancelUpdate.setOnClickListener {
@@ -83,23 +90,26 @@ class CreateProfileFragment : Fragment() {
                     "${tiFullName.text}, ${tiUsername.text}",
                     Toast.LENGTH_SHORT
                 ).show()
-                finManagerViewModel.updateProfile(UserProfile(
-                    fullName = tiFullName.text.toString(),
-                    username = tiUsername.text.toString()))
+                finManagerViewModel.updateProfile(
+                    UserProfile(
+                        fullName = tiFullName.text.toString(),
+                        username = tiUsername.text.toString()
+                    )
+                )
             }
 
             lifecycleScope.launch {
-                finManagerViewModel.totalBalance.collect{
+                finManagerViewModel.totalBalance.collect {
                     tvAccountBal.text = "$it$"
                 }
             }
             lifecycleScope.launch {
-                finManagerViewModel.totalIncome.collect{
+                finManagerViewModel.totalIncome.collect {
                     tvAccountIncome.text = "$it$"
                 }
             }
             lifecycleScope.launch {
-                finManagerViewModel.totalExpenses.collect{
+                finManagerViewModel.totalExpenses.collect {
                     tvAccountExpenses.text = "$it$"
 
                 }
@@ -107,7 +117,7 @@ class CreateProfileFragment : Fragment() {
         }
     }
 
-    private fun setupToolbar(){
+    private fun setupToolbar() {
         binding.toolbar.setNavigationIcon(R.drawable.ic_arrow_left)
     }
 

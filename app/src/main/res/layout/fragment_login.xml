@@ -60,6 +60,8 @@
         app:counterMaxLength="1"
         style="@style/OutlinedTextInputFieldStyle"
         app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:startIconTint="@color/white"
         >
 
         <com.google.android.material.textfield.TextInputEditText
@@ -86,6 +88,9 @@
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_lock"
         app:passwordToggleTint="?attr/colorOnPrimary"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:startIconTint="@color/white"
         style="@style/OutlinedTextInputFieldStyle"
         >
 

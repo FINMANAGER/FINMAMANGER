@@ -12,12 +12,6 @@
         <action
             android:id="@+id/action_login_to_signUp"
             app:destination="@id/signUp" />
-        <action
-            android:id="@+id/action_login_to_dashboard"
-            app:destination="@id/dashboard"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/navigation"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/signUp"

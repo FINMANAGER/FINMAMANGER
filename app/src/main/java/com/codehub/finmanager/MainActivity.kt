@@ -2,6 +2,7 @@ package com.codehub.finmanager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -13,11 +14,13 @@ import androidx.navigation.ui.setupWithNavController
 import com.codehub.finmanager.databinding.ActivityMainBinding
 import com.codehub.finmanager.ui.FinManagerViewModel
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.Runnable
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     private val finManagerViewModel: FinManagerViewModel by viewModels()
+    private var backPressedTime=0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -34,20 +37,27 @@ class MainActivity : AppCompatActivity() {
         }
 
         navController.addOnDestinationChangedListener{_, destination, _ ->
-          /*  when(destination.id){
-                // not login/signup screens
-                // going to dashboard if user is authenticated
-                R.id.login, R.id.signUp->{
-                    // user null --->navigate to login
-                    binding.bottomNav.visibility = View.GONE
-                    binding.fabAddIncomeExpense.visibility = View.GONE
+            when(destination.id){
+                R.id.dashboard, R.id.statistics, R.id.createProfileFragment->{
+                    val user = FirebaseAuth.getInstance().currentUser
+                    if (user==null){
+                        navController.navigate(R.id.dashboard)
+                    }
                 }
-                R.id.dashboard ->{
-                    binding.bottomNav.visibility = View.VISIBLE
-                    binding.fabAddIncomeExpense.visibility = View.VISIBLE
-                }
-            }*/
+            }
         }
+    }
+
+    override fun onBackPressed() {
+        if (backPressedTime+3000>System.currentTimeMillis()){
+            super.onBackPressed()
+            finish()
+            FirebaseAuth.getInstance().signOut()
+        }else{
+        Toast.makeText(this, "Tap back again to exit the app", Toast.LENGTH_LONG).show()
+        }
+        backPressedTime= System.currentTimeMillis()
+
     }
     fun handleBottomBarVisibility(beVisible:Boolean) {
         if (beVisible){

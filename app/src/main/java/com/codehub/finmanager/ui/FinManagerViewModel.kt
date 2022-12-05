@@ -211,7 +211,6 @@ class FinManagerViewModel : ViewModel() {
                             budgetList.value = budgets
                             totalIncome.value = budgets.sumOf { it?.budget ?: 0.0 }
                             Log.d("ViewModel", "getBudgets: $budgets")
-
                         }
                         .addOnFailureListener { exception ->
                             getBudgetsError.value = exception.message ?: ""
@@ -255,7 +254,7 @@ class FinManagerViewModel : ViewModel() {
         return transactions.groupBy { it!!.category }.map {
             ChartItem(
                 amount = it.value
-                    .filter { transaction ->  transaction?.isIncome ==false }
+                    .filter { transaction ->  transaction?.isIncome ==false && transaction.amount>0 }
                     .sumOf {trans -> trans!!.amount },
                 name = it.key,
                 color = when(it.key){
@@ -267,7 +266,7 @@ class FinManagerViewModel : ViewModel() {
                     else -> R.color.purple_700
                 }
             )
-        }
+        }.filter { it.amount>0 }
 
     }
 
