@@ -21,7 +21,6 @@
         android:text="@string/transaction_title_hint"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/variableColor"
-        app:layout_constraintEnd_toStartOf="@+id/itvTransactionDate"
         app:layout_constraintStart_toEndOf="@+id/variableColor"
         app:layout_constraintTop_toTopOf="@+id/variableColor" />
 
@@ -33,7 +32,6 @@
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/circle_background"
             android:contentDescription="@string/transaction_image_content_desc" />
 
     <TextView

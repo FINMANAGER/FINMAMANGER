@@ -1,5 +1,6 @@
 package com.codehub.finmanager.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -11,6 +12,7 @@ import com.codehub.finmanager.model.Budget
 
 class BudgetAdapter(val clickListener:(Budget)->Unit) :ListAdapter<Budget, BudgetAdapter.BudgetViewHolder>(BudgetDiffUtil){
     inner class BudgetViewHolder(private val binding: ItemBudgetBinding):RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun bind(budget: Budget){
             binding.tvBudgetItemTitle.text = budget.category
             binding.tvBudgetItemPercent.text = String.format("%.1f",(budget.spended/budget.budget)*100) + "%"
@@ -21,6 +23,9 @@ class BudgetAdapter(val clickListener:(Budget)->Unit) :ListAdapter<Budget, Budge
                 "Travel/Transportation" -> binding.ivBudgetItemImage.setImageResource(R.drawable.ic_travel)
                 "Wifi" -> binding.ivBudgetItemImage.setImageResource(R.drawable.ic_wifi)
                 "Medicine" -> binding.ivBudgetItemImage.setImageResource(R.drawable.ic_medicine)
+                else ->{
+                    binding.ivBudgetItemImage.setImageResource(R.drawable.ic_others)
+                }
             }
             binding.root.setOnClickListener {
                 clickListener(budget)

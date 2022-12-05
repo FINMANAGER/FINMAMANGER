@@ -14,6 +14,7 @@ import com.codehub.finmanager.R
 import com.codehub.finmanager.adapters.ChartItemAdapter
 import com.codehub.finmanager.databinding.FragmentStatisticsBinding
 import com.codehub.finmanager.util.Constants
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import org.eazegraph.lib.models.PieModel
 
@@ -39,7 +40,7 @@ class Statistics : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chartItemAdapter = ChartItemAdapter()
-        chartItemAdapter.submitList(Constants.chartItems)
+
         binding.apply {
             rvChartItems.apply {
                 adapter = chartItemAdapter
@@ -48,23 +49,32 @@ class Statistics : Fragment() {
                     LinearLayoutManager.VERTICAL, false
                 )
             }
-            Constants.chartItems.forEach { chartItem ->
-                val totals = Constants.chartItems.sumOf {
-                    it.amount
+
+            lifecycleScope.launch {
+                finManagerViewModel.transactions.collect{
+                    val categories = finManagerViewModel.getCategoryTransactions(it)
+                    chartItemAdapter.submitList(categories)
+                    finManagerViewModel.totalIncome.collect{ totalIncome ->
+                        categories.forEach { chartItem ->
+                            val percent = ((chartItem.amount.div(totalIncome) )* 100).toFloat()
+                            pieChart.apply {
+                                addPieSlice(
+                                    PieModel(
+                                        chartItem.name,
+                                        percent,
+                                        chartItem.color
+                                    )
+                                )
+                                innerValueString = "55%"
+                            }
+
+                        }
+                    }
+
                 }
-                val percent = ((chartItem.amount.div(totals) )* 100).toFloat()
-                pieChart.apply {
-                    addPieSlice(
-                        PieModel(
-                            chartItem.name,
-                            percent,
-                            resources.getColor(chartItem.color)
-                        )
-                    )
-                    innerValueString = "55%"
                 }
 
-            }
+
             lifecycleScope.launch {
                 finManagerViewModel.currentUser.collect{ user ->
                     tvCurrentUser.text = user.name

@@ -1,5 +1,6 @@
 package com.codehub.finmanager.profile
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,7 @@ class CreateProfileFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         finManagerViewModel.getUserProfile()
@@ -63,8 +65,6 @@ class CreateProfileFragment : Fragment() {
             }
         }
 
-
-
         binding.apply {
             toolbar.setOnMenuItemClickListener {
                     clProfile.visibility = View.VISIBLE
@@ -86,6 +86,23 @@ class CreateProfileFragment : Fragment() {
                 finManagerViewModel.updateProfile(UserProfile(
                     fullName = tiFullName.text.toString(),
                     username = tiUsername.text.toString()))
+            }
+
+            lifecycleScope.launch {
+                finManagerViewModel.totalBalance.collect{
+                    tvAccountBal.text = "$it$"
+                }
+            }
+            lifecycleScope.launch {
+                finManagerViewModel.totalIncome.collect{
+                    tvAccountIncome.text = "$it$"
+                }
+            }
+            lifecycleScope.launch {
+                finManagerViewModel.totalExpenses.collect{
+                    tvAccountExpenses.text = "$it$"
+
+                }
             }
         }
     }

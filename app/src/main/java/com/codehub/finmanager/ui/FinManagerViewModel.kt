@@ -1,14 +1,14 @@
 package com.codehub.finmanager.ui
 
+import android.graphics.Color
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.codehub.finmanager.model.Budget
-import com.codehub.finmanager.model.Transaction
-import com.codehub.finmanager.model.User
-import com.codehub.finmanager.model.UserProfile
+import com.codehub.finmanager.R
+import com.codehub.finmanager.model.*
 import com.codehub.finmanager.reposiory.FinManagerRepo
+import com.codehub.finmanager.util.CategoryOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -247,6 +247,26 @@ class FinManagerViewModel : ViewModel() {
                         }
                 }
             }
+        }
+
+    }
+
+    fun getCategoryTransactions(transactions: List<Transaction?>): List<ChartItem> {
+        return transactions.groupBy { it!!.category }.map {
+            ChartItem(
+                amount = it.value
+                    .filter { transaction ->  transaction?.isIncome ==false }
+                    .sumOf {trans -> trans!!.amount },
+                name = it.key,
+                color = when(it.key){
+                    "Food/Beverage" -> Color.YELLOW
+                    "Bills/Fees" -> Color.RED
+                    "Travel/Transportation" ->Color.BLUE
+                    "Wifi" -> Color.MAGENTA
+                    "Medicine" -> Color.GREEN
+                    else -> R.color.purple_700
+                }
+            )
         }
 
     }

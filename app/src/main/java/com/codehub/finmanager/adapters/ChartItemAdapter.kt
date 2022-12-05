@@ -1,6 +1,7 @@
 package com.codehub.finmanager.adapters
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -18,8 +19,10 @@ class ChartItemAdapter : ListAdapter<ChartItem, ChartItemAdapter.ChartViewHolder
             binding.tvChartItemName.text = chartItem.name
             binding.tvChartItemAmount.text = chartItem.amount.toString()
             binding.variableColor.apply {
-                setImageResource(chartItem.color)
-                background = binding.root.resources.getDrawable(R.drawable.circle_background)
+                //setBackgroundColor(chartItem.color)
+                background = binding.root.resources.getDrawable(R.drawable.circle_background).apply {
+                    backgroundTintList = ColorStateList.valueOf(chartItem.color)
+                }
             }
 
         }

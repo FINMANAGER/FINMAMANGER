@@ -119,12 +119,12 @@ class Dashboard : Fragment() {
             }
             lifecycleScope.launch{
                 finManagerViewModel.incomePercent.collect { incomePerc ->
-                    tvIncomePercent.text = "$incomePerc%"
+                    tvIncomePercent.text = String.format("%.1f",incomePerc) + "%"
                 }
             }
             lifecycleScope.launch{
                 finManagerViewModel.expensePercent.collect { expense->
-                    tvExpensesPercent.text = "$expense%"
+                    tvExpensesPercent.text = String.format("%.1f",expense) + "%"
                 }
             }
         }
