@@ -71,7 +71,6 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:textColorHint="@color/white"
-            android:text="test4@gmail.com"
             style="@style/TextInputEditTextStyle"
             android:hint="@string/email_address_label" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -99,7 +98,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password_label"
-            android:text="test4pass"
             style="@style/TextInputEditTextStyle"
             android:maxLines="1"
             android:inputType="textPassword" />
