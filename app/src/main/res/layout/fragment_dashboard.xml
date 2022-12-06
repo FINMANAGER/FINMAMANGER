@@ -23,7 +23,7 @@
                 android:layout_marginVertical="16dp"
                 android:layout_marginStart="16dp"
                 android:contentDescription="@string/profile_picture_content_desc"
-                android:src="@drawable/avatar"
+                android:src="@drawable/ic_user_profile"
                 app:civ_circle_background_color="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -226,9 +226,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvBudget"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             app:paddingEnd="24dp"
             android:orientation="horizontal"
@@ -403,7 +402,17 @@
 
         </androidx.core.widget.NestedScrollView>
 
-
+        <TextView
+            android:id="@+id/tvEmptyBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No budgets yet!"
+            android:textSize="20sp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/rvBudget"
+            app:layout_constraintEnd_toEndOf="@+id/rvBudget"
+            app:layout_constraintStart_toStartOf="@+id/rvBudget"
+            app:layout_constraintTop_toTopOf="@+id/rvBudget" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

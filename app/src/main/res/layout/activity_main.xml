@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         app:elevation="5dp"
         app:fabAlignmentMode="end"
-        app:fabCradleRoundedCornerRadius="18dp"
+        app:fabCradleRoundedCornerRadius="16dp"
         android:background="@drawable/top_rounded_corners">
         <com.google.android.material.bottomnavigation.BottomNavigationView
            android:id="@+id/bottomNavView"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
             app:elevation="0dp"
-            app:itemIconTint="@android:color/black"
+            app:itemIconTint="?attr/colorControlNormal"
             app:menu="@menu/bottom_bar_menu"/>
 
     </com.google.android.material.bottomappbar.BottomAppBar>

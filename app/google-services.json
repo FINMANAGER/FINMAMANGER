@@ -1,33 +1,62 @@
 {
   "project_info": {
-    "project_number": "457085899019",
-    "project_id": "finmanager-4590b",
-    "storage_bucket": "finmanager-4590b.appspot.com"
+    "project_number": "540764013945",
+    "project_id": "finmanager-f2308",
+    "storage_bucket": "finmanager-f2308.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:457085899019:android:8b13282436f6b84069120e",
+        "mobilesdk_app_id": "1:540764013945:android:753dff46d7b8a36bf5dba8",
         "android_client_info": {
           "package_name": "com.codehub.finmanager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "457085899019-tl36ar547qeg49nf5bcumqlg7jj9i321.apps.googleusercontent.com",
+          "client_id": "540764013945-3d8ehh2n0usl5v4gbqq0rlt47tiaaos5.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDTtxnd8zcDOloBHQujrPlQHdU51v4jH8E"
+          "current_key": "AIzaSyBptEHtuPXgESfz8jfgTBl15x3euFMeXU8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "457085899019-tl36ar547qeg49nf5bcumqlg7jj9i321.apps.googleusercontent.com",
+              "client_id": "540764013945-3d8ehh2n0usl5v4gbqq0rlt47tiaaos5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540764013945:android:a33b310265f20caff5dba8",
+        "android_client_info": {
+          "package_name": "com.finmanager.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540764013945-3d8ehh2n0usl5v4gbqq0rlt47tiaaos5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBptEHtuPXgESfz8jfgTBl15x3euFMeXU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540764013945-3d8ehh2n0usl5v4gbqq0rlt47tiaaos5.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

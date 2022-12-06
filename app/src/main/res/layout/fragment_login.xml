@@ -52,20 +52,25 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
+        android:minHeight="60dp"
         app:layout_constraintEnd_toEndOf="@+id/tvWelcomeLabel"
         app:layout_constraintStart_toStartOf="@+id/tvWelcomeLabel"
         app:layout_constraintTop_toBottomOf="@id/tvLoginToAccountLabel"
         app:startIconDrawable="@drawable/ic_email"
         app:counterMaxLength="1"
         style="@style/OutlinedTextInputFieldStyle"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:startIconTint="@color/white"
         >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/tiEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:inputType="textEmailAddress"
             android:maxLines="1"
+            android:textColorHint="@color/white"
             style="@style/TextInputEditTextStyle"
             android:hint="@string/email_address_label" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -73,7 +78,8 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tlLoginPassword"
          android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="wrap_content"
+        android:minHeight="60dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="@+id/tlLoginEmail"
         app:layout_constraintStart_toStartOf="@+id/tlLoginEmail"
@@ -81,6 +87,9 @@
         app:passwordToggleEnabled="true"
         app:startIconDrawable="@drawable/ic_lock"
         app:passwordToggleTint="?attr/colorOnPrimary"
+        app:hintTextColor="@color/white"
+        android:textColorHint="@color/white"
+        app:startIconTint="@color/white"
         style="@style/OutlinedTextInputFieldStyle"
         >
 
@@ -128,7 +137,7 @@
             android:layout_marginTop="100dp"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/login_label"
-            app:cornerRadius="25dp"
+            app:cornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@+id/tvForgotPassword"
             app:layout_constraintStart_toStartOf="@+id/checkBox"
             app:layout_constraintTop_toBottomOf="@+id/checkBox" />
@@ -147,5 +156,17 @@
             app:layout_constraintEnd_toEndOf="@+id/btnLogin"
             app:layout_constraintStart_toStartOf="@+id/btnLogin"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+        <ProgressBar
+            android:id="@+id/pbLogingin"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tlLoginPassword"
+            app:layout_constraintVertical_bias="0.518" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -47,8 +47,8 @@ class TransactionAdapter (private val transactionList: ArrayList<TransactionMode
         holder.tvCategory.text = currentTransaction.category
 
         val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
-        val result = Date(currentTransaction.date!!)
-        holder.tvDate.text = simpleDateFormat.format(result)
+        val result = currentTransaction.date?.let { Date(it) }
+        holder.tvDate.text = result?.let { simpleDateFormat.format(it) }
 
         if (currentTransaction.type == 1){
             holder.typeIcon.setImageResource(R.drawable.ic_moneyout_svgrepo_com)

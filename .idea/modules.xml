@@ -4,6 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/FinManager.iml" filepath="$PROJECT_DIR$/.idea/modules/FinManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinManager.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinManager.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinManager.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinManager.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinManager.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinManager.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/FinManager.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/FinManager.app.unitTest.iml" />
     </modules>
   </component>
 </project>

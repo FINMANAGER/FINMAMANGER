@@ -6,6 +6,8 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0da8af2f1790f6b85f0367f87f3cacd9/transformed/firebase-common-ktx-20.2.0/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/0da8af2f1790f6b85f0367f87f3cacd9/transformed/firebase-common-ktx-20.2.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/0da8af2f1790f6b85f0367f87f3cacd9/transformed/firebase-common-ktx-20.2.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6a3b6f60a739520c905d432d409c0b62/transformed/firebase-common-ktx-20.2.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6a3b6f60a739520c905d432d409c0b62/transformed/firebase-common-ktx-20.2.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-common-ktx/20.2.0/d24d21741ea6bb7d2a3055e9820419e069bacaa7/firebase-common-ktx-20.2.0-javadoc.jar!/" />
